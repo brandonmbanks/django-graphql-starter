@@ -1,0 +1,9 @@
+argon2-cffi
+black
+django
+flake8
+pip-tools
+pre-commit
+psycopg2-binary
+pytest-django
+python-dotenv

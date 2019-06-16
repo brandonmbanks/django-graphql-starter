@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: postgres:10.8
+    ports:
+      - "5432:5432"
+    environment:
+      - DEBUG=True
+      - POSTGRES_DB=test
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=secret
+    networks:
+      - mysite
+  app:
+    build: .
+    command: python3 manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/home/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    networks:
+      - mysite
+networks:
+  mysite:
