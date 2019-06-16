@@ -2,6 +2,7 @@ argon2-cffi
 black
 django
 flake8
+graphene-django
 pip-tools
 pre-commit
 psycopg2-binary
