@@ -1,5 +1,8 @@
 argon2-cffi
+black
 django
+flake8
+pre-commit
 psycopg2-binary
 pytest-django
 python-dotenv
