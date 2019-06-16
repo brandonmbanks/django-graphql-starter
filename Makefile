@@ -66,9 +66,9 @@ test: start ## Run the default tests for this project.
 	@docker-compose exec app pytest
 
 .PHONY: update
-update: ## Update the project's dependencies.
+update: start ## Update the project's dependencies.
 	@echo "+ $@"
-	@docker run -it -v ${PREFIX}:/app ${COMPOSERIMAGE} update
+	@docker-compose exec app pip-compile -P ${dep}
 
 .PHONY: help
 help:

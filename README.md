@@ -25,13 +25,14 @@ docker-compose exec app bash
 pytest
 ```
 
-## Adding Dependencies
+## Dependencies
 I use [pip-tools](https://github.com/jazzband/pip-tools) to help manage dependencies.
 
 `requirements.in` is the file which contains the project's base required dependencies and is the file to which you would add more dependencies.
 
 `pip-compile` will produce your requirements.txt, with all the dependencies (and all underlying dependencies) pinned.
 
+### Adding Dependencies
 #### Steps
 
 1. Add dependency to `requirements.in`
@@ -50,3 +51,23 @@ make compile
 make build
 ```
 *By rebuilding, we don't have to install the new dependencies each time we start the containers and the image will be updated for the next time start the app.*
+
+### Upgrading Dependencies
+#### Steps
+
+1. Upgrade using `pip-compile` through the `Makefile`
+```bash
+make upgrade dep=pytest
+```
+
+2. Rebuild containers to install dependencies from the updated `requirements.txt`
+```bash
+make build
+```
+
+*If you need more complex updating control, exec into app container*
+```bash
+docker-compose exec app bash
+```
+
+Follow `pip-tools` [documentation](https://github.com/jazzband/pip-tools#updating-requirements) for updating requirements
