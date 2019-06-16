@@ -17,7 +17,11 @@ build: ## Build all of the project's containers.
 clean: stop ## Clean all of the project's containers and dependencies.
 	@echo "+ $@"
 	@docker-compose rm
-	@rm -rf vendor
+
+.PHONY: compile
+compile: start ## Clean all of the project's containers and dependencies.
+	@echo "+ $@"
+	@docker-compose exec app pip-compile
 
 .PHONY: db
 db: start ## Migrate the project's database.
