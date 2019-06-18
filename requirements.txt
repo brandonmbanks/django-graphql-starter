@@ -15,6 +15,8 @@ cffi==1.12.3              # via argon2-cffi
 cfgv==2.0.0               # via pre-commit
 click==7.0                # via black, pip-tools
 django==2.2.2
+djangorestframework-simplejwt==4.3.0
+djangorestframework==3.9.4  # via djangorestframework-simplejwt
 entrypoints==0.3          # via flake8
 flake8==3.7.7
 graphene-django==2.3.0
@@ -36,6 +38,7 @@ py==1.8.0                 # via pytest
 pycodestyle==2.5.0        # via flake8
 pycparser==2.19           # via cffi
 pyflakes==2.1.1           # via flake8
+pyjwt==1.7.1              # via djangorestframework-simplejwt
 pyparsing==2.4.0          # via packaging
 pytest-django==3.5.0
 pytest==4.6.3             # via pytest-django

@@ -1,6 +1,7 @@
 argon2-cffi
 black
 django
+djangorestframework_simplejwt
 flake8
 graphene-django
 pip-tools
