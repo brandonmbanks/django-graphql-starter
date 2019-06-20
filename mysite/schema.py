@@ -1,11 +1,9 @@
 import graphene
+from api.graphql.queries import GetUser
 
 
-class Query(graphene.ObjectType):
-    hello = graphene.String()
-
-    def resolve_hello(self, info):
-        return "hello world"
+class Query(GetUser, graphene.ObjectType):
+    pass
 
 
 schema = graphene.Schema(query=Query)
