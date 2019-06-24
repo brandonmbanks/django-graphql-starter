@@ -1,6 +1,5 @@
 import pytest
 from utils import BaseTestCase
-from users.models import User
 
 
 @pytest.mark.django_db()
@@ -50,7 +49,5 @@ class TestGetUser(BaseTestCase):
             }
         """
         )
-        assert (
-            'Cannot query field "password" on type "UserType".'
-            == res.json()["errors"][0]["message"]
-        )
+        error = res.json()["errors"][0]["message"]
+        assert 'Cannot query field "password"' in error
