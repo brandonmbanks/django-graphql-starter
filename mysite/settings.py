@@ -27,9 +27,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ["APP_ENV"] == "local" else False
 
-ALLOWED_HOSTS: List[str] = []
+ALLOWED_HOSTS: List[str] = ["*"]
 
 
 # Application definition
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "graphene_django",
+    "rest_framework",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -103,6 +106,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 PASSWORD_HASHERS = ["django.contrib.auth.hashers.Argon2PasswordHasher"]
 
+AUTH_USER_MODEL = "users.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+    "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -122,3 +134,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
+GRAPHENE = {"SCHEMA": "mysite.schema.schema"}  # Where your Graphene schema lives

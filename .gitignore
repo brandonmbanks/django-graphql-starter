@@ -104,3 +104,6 @@ venv.bak/
 .mypy_cache/
 
 .bash_history
+# virtual env
+bin/
+pyvenv.cfg
