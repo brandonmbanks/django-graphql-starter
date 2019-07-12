@@ -13,7 +13,7 @@ black==19.3b0
 cffi==1.12.3              # via argon2-cffi
 cfgv==2.0.0               # via pre-commit
 click==7.0                # via black, pip-tools
-django==2.2.2
+django==2.2.3
 entrypoints==0.3          # via flake8
 flake8==3.7.7
 identify==1.4.5           # via pre-commit
