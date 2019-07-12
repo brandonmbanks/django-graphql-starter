@@ -33,6 +33,11 @@ env:
 	@echo "+ $@"
 	@cp .env.example .env
 
+.PHONY: format
+format: start ## Use black to format the projects code
+	@echo "+ $@"
+	@docker-compose exec app black .
+
 .PHONY: install
 install: start ## Install the project's dependencies.
 	@echo "+ $@"
